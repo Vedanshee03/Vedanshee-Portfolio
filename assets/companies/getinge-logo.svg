@@ -1,6 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 120" role="img" aria-labelledby="title">
-  <title id="title">Getinge logo</title>
-  <rect width="320" height="120" rx="20" fill="#ffffff"/>
-  <text x="160" y="68" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="42" font-weight="700" fill="#006a6a">Getinge</text>
-  <path d="M88 82h144" stroke="#006a6a" stroke-width="5" stroke-linecap="round"/>
-</svg>
