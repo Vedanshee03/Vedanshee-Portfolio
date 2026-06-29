@@ -351,6 +351,11 @@ h3 {
   background: #006a6a;
 }
 
+.company-logo-frame-forest {
+  border-color: rgba(47, 76, 59, 0.22);
+  background: #2f4c3b;
+}
+
 .company-logo {
   width: 100%;
   max-height: 54px;
