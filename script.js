@@ -4,14 +4,14 @@ const projects = {
     title: "Soft Robot Control Panel",
     subtitle: "A pressure-feedback control system for a four-chamber soft robot arm.",
     overview:
-      "This project focused on designing a pneumatic actuation and control panel that could regulate a soft robotic arm through sensor feedback, valve control, and real-time PID tuning.",
+      "I designed this control panel to make a soft robot arm easier to regulate and test. The system used pressure feedback, valve control, and real-time PID tuning instead of guesswork.",
     tools: ["C/C++", "Python", "Arduino MEGA", "Pressure sensors", "Flow control valves", "PID control"],
     details: [
-      "Designed the pneumatic system architecture for a four-chamber soft robot arm.",
+      "Designed the pneumatic architecture for a four-chamber soft robot arm.",
       "Integrated pressure sensors and flow control valves for closed-loop feedback.",
       "Implemented PID control for real-time pressure regulation and adaptive tuning.",
       "Improved pneumatic control efficiency by 45% through feedback-based tuning.",
-      "Connects to soft robotics research on distributed strain sensing and shape reconstruction.",
+      "Connected the build to soft robotics research on strain sensing and shape reconstruction.",
     ],
     note:
       "Related publication: Model-based 3D shape reconstruction of soft robots via distributed strain sensing, Soft Robotics 12(6), 2025.",
@@ -21,7 +21,7 @@ const projects = {
     title: "Autonomous Rover Robot",
     subtitle: "A GPS-localized rover using suspension design, path planning, and heading control.",
     overview:
-      "The rover project combined mechanical design, localization, and autonomous navigation for a robust mobile platform built around an inverse double-lambda suspension mechanism.",
+      "This rover brought together mechanical design, localization, and autonomous navigation. The fun part was making the suspension, GPS, path planning, and control logic all behave as one system.",
     tools: ["C/C++", "Python", "NEO-8M GPS", "A* path planning", "Pure Pursuit", "Mechanical design"],
     details: [
       "Constructed an autonomous rover around an inverse double-lambda suspension mechanism.",
@@ -32,14 +32,14 @@ const projects = {
       "Received $12K funding and filed a provisional patent for the rover design.",
     ],
     note:
-      "This project is where the prize, funding, and patent context belongs: detailed enough for interested readers without crowding the homepage.",
+      "This project placed 2nd nationally out of 150 teams, received $12K in funding, and led to a provisional patent filing for the rover design.",
   },
   bfmc: {
     kicker: "Autonomous mobility · Bosch Future Mobility Challenge",
     title: "Bosch Future Mobility Challenge",
     subtitle: "A global autonomous mobility challenge focused on vehicle behavior and navigation.",
     overview:
-      "The BFMC project centered on developing autonomous mobility behavior in a competition setting, balancing perception, navigation, and reliable vehicle response.",
+      "This project was about building autonomous mobility behavior in a competition setting, where the vehicle had to make good decisions consistently under real testing pressure.",
     tools: ["Autonomous navigation", "Perception", "Control systems", "Team engineering", "Debugging"],
     details: [
       "Built autonomous mobility functionality for the 6th edition of the Bosch Future Mobility Challenge.",
@@ -48,7 +48,7 @@ const projects = {
       "Ranked 21st globally among 118 teams.",
     ],
     note:
-      "The competition standing is intentionally shown inside the project detail view so the homepage remains calm and professional.",
+      "I keep the ranking here instead of leading with it because the engineering work matters more than the scoreboard.",
   },
 };
 
