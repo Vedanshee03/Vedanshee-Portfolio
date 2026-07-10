@@ -238,6 +238,8 @@ h3 {
 }
 
 .portrait-card {
+  max-width: 280px;
+  margin-inline: auto;
   padding: 1rem;
 }
 
@@ -272,6 +274,16 @@ h3 {
 
 .image-shell img.is-missing {
   display: none;
+}
+
+.image-shell-portrait {
+  min-height: 0;
+  aspect-ratio: 3 / 4;
+}
+
+.image-shell-portrait img {
+  object-fit: contain;
+  object-position: center;
 }
 
 .image-fallback {
