@@ -697,6 +697,10 @@ h3 {
   display: none;
 }
 
+.dialog-gallery-image--scaled img:not(.is-missing) {
+  transform: scale(var(--gallery-image-scale, 0.85));
+}
+
 .dialog-gallery-item figcaption {
   margin-top: 0.45rem;
   color: var(--subtle);

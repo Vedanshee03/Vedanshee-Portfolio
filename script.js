@@ -20,6 +20,7 @@ const projects = {
         src: "assets/projects/soft-robot/grasping.png",
         alt: "Soft robot grasping motion",
         caption: "Grasping motion",
+        scale: 0.82,
       },
       {
         src: "assets/projects/soft-robot/bending.png",
@@ -53,8 +54,8 @@ const projects = {
     images: [
       {
         src: "assets/projects/autonomous-rover/chassis.png",
-        alt: "Autonomous rover chassis and suspension",
-        caption: "Rover chassis and suspension",
+        alt: "Autonomous rover chassis",
+        caption: "Rover chassis",
       },
       {
         src: "assets/projects/autonomous-rover/prototype.png",
@@ -85,9 +86,10 @@ const projects = {
       "I keep the ranking here instead of leading with it because the engineering work matters more than the scoreboard.",
     images: [
       {
-        src: "assets/projects/bfmc/bosch.png",
-        alt: "BFMC Bosch Future Mobility Challenge vehicle",
-        caption: "Bosch vehicle build",
+        src: "assets/projects/bfmc/holding-demo-vehicle.png",
+        alt: "Vedanshee holding the BFMC demo vehicle",
+        caption: "With the demo vehicle",
+        scale: 0.82,
       },
       {
         src: "assets/projects/bfmc/teamwork.png",
@@ -96,8 +98,8 @@ const projects = {
       },
       {
         src: "assets/projects/bfmc/competition.png",
-        alt: "BFMC team at competition",
-        caption: "Competition testing",
+        alt: "BFMC team on demo day",
+        caption: "BFMC - demo day",
       },
     ],
   },
@@ -159,12 +161,16 @@ function renderProjectGallery(images) {
 
   setHidden(gallerySection, false);
 
-  images.forEach(({ src, alt, caption }) => {
+  images.forEach(({ src, alt, caption, scale }) => {
     const item = document.createElement("figure");
     item.className = "dialog-gallery-item";
 
     const shell = document.createElement("div");
     shell.className = "image-shell dialog-gallery-image";
+    if (scale) {
+      shell.classList.add("dialog-gallery-image--scaled");
+      shell.style.setProperty("--gallery-image-scale", scale);
+    }
 
     const image = document.createElement("img");
     image.src = src;
