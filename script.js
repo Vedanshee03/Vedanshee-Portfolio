@@ -15,6 +15,23 @@ const projects = {
     ],
     note:
       "Related publication: Model-based 3D shape reconstruction of soft robots via distributed strain sensing, Soft Robotics 12(6), 2025.",
+    images: [
+      {
+        src: "assets/projects/soft-robot/control-panel.png",
+        alt: "Soft robot pneumatic control panel",
+        caption: "Pneumatic control panel",
+      },
+      {
+        src: "assets/projects/soft-robot/pneumatic-setup.png",
+        alt: "Soft robot pneumatic setup and tubing",
+        caption: "Pneumatic setup",
+      },
+      {
+        src: "assets/projects/soft-robot/testing.png",
+        alt: "Soft robot pressure feedback testing",
+        caption: "Pressure feedback testing",
+      },
+    ],
   },
   "autonomous-rover": {
     kicker: "Autonomous navigation · Competition build",
@@ -33,6 +50,23 @@ const projects = {
     ],
     note:
       "This project placed 2nd nationally out of 150 teams, received $12K in funding, and led to a provisional patent filing for the rover design.",
+    images: [
+      {
+        src: "assets/projects/autonomous-rover/chassis.png",
+        alt: "Autonomous rover chassis and suspension",
+        caption: "Rover chassis and suspension",
+      },
+      {
+        src: "assets/projects/autonomous-rover/navigation.png",
+        alt: "Autonomous rover navigation and GPS setup",
+        caption: "Navigation setup",
+      },
+      {
+        src: "assets/projects/autonomous-rover/competition.png",
+        alt: "Autonomous rover at Robofest competition",
+        caption: "Competition run",
+      },
+    ],
   },
   bfmc: {
     kicker: "Autonomous mobility · Bosch Future Mobility Challenge",
@@ -49,6 +83,23 @@ const projects = {
     ],
     note:
       "I keep the ranking here instead of leading with it because the engineering work matters more than the scoreboard.",
+    images: [
+      {
+        src: "assets/projects/bfmc/vehicle.png",
+        alt: "BFMC autonomous vehicle build",
+        caption: "Vehicle build",
+      },
+      {
+        src: "assets/projects/bfmc/wiring.png",
+        alt: "BFMC vehicle wiring and electronics",
+        caption: "Wiring and electronics",
+      },
+      {
+        src: "assets/projects/bfmc/competition.png",
+        alt: "BFMC team at competition",
+        caption: "Competition testing",
+      },
+    ],
   },
 };
 
@@ -62,12 +113,74 @@ const kicker = document.querySelector("[data-dialog-kicker]");
 const tools = document.querySelector("[data-dialog-tools]");
 const details = document.querySelector("[data-dialog-details]");
 const note = document.querySelector("[data-dialog-note]");
+const gallerySection = document.querySelector("[data-dialog-gallery-section]");
+const gallery = document.querySelector("[data-dialog-gallery]");
 let activeTrigger = null;
 
 function setHidden(element, hidden) {
   if (!element) return;
   element.hidden = hidden;
   element.setAttribute("aria-hidden", String(hidden));
+}
+
+function handleImageFallback(image) {
+  image.classList.add("is-missing");
+  image.setAttribute("aria-hidden", "true");
+}
+
+function setupOptionalImage(image, onMissing) {
+  const markMissing = () => {
+    handleImageFallback(image);
+    onMissing?.();
+  };
+
+  if (image.complete && image.naturalWidth === 0) {
+    markMissing();
+    return;
+  }
+
+  image.addEventListener("error", markMissing, { once: true });
+}
+
+function renderProjectGallery(images) {
+  if (!gallery || !gallerySection) return;
+
+  gallery.innerHTML = "";
+
+  if (!images?.length) {
+    gallerySection.hidden = true;
+    return;
+  }
+
+  gallerySection.hidden = false;
+
+  images.forEach(({ src, alt, caption }) => {
+    const item = document.createElement("figure");
+    item.className = "dialog-gallery-item";
+
+    const shell = document.createElement("div");
+    shell.className = "image-shell dialog-gallery-image";
+
+    const image = document.createElement("img");
+    image.src = src;
+    image.alt = alt;
+    image.setAttribute("data-optional-image", "");
+
+    shell.appendChild(image);
+    item.appendChild(shell);
+
+    if (caption) {
+      const captionEl = document.createElement("figcaption");
+      captionEl.textContent = caption;
+      item.appendChild(captionEl);
+    }
+
+    setupOptionalImage(image, () => {
+      item.hidden = true;
+    });
+
+    gallery.appendChild(item);
+  });
 }
 
 function openProject(projectId, trigger) {
@@ -82,6 +195,7 @@ function openProject(projectId, trigger) {
   tools.innerHTML = project.tools.map((tool) => `<span>${tool}</span>`).join("");
   details.innerHTML = project.details.map((item) => `<li>${item}</li>`).join("");
   note.textContent = project.note;
+  renderProjectGallery(project.images);
 
   setHidden(backdrop, false);
   setHidden(dialog, false);
@@ -114,21 +228,13 @@ function handleProjectCardKeydown(event) {
   handleProjectCardActivation(event);
 }
 
-function handleImageFallback(image) {
-  image.classList.add("is-missing");
-  image.setAttribute("aria-hidden", "true");
-}
-
 document.querySelectorAll("[data-project]").forEach((card) => {
   card.addEventListener("click", handleProjectCardActivation);
   card.addEventListener("keydown", handleProjectCardKeydown);
 });
 
 document.querySelectorAll("[data-optional-image]").forEach((image) => {
-  if (image.complete && image.naturalWidth === 0) {
-    handleImageFallback(image);
-  }
-  image.addEventListener("error", () => handleImageFallback(image), { once: true });
+  setupOptionalImage(image);
 });
 
 closeButton?.addEventListener("click", closeProject);
