@@ -301,3 +301,49 @@ if ("IntersectionObserver" in window && sections.length > 0) {
 
   sections.forEach((section) => observer.observe(section));
 }
+
+const funCarousel = document.querySelector("[data-fun-carousel]");
+
+if (funCarousel) {
+  const track = funCarousel.querySelector("[data-fun-carousel-track]");
+  const prevButton = funCarousel.querySelector("[data-fun-carousel-prev]");
+  const nextButton = funCarousel.querySelector("[data-fun-carousel-next]");
+  const cards = track ? [...track.children] : [];
+  let activeIndex = 0;
+
+  function getVisibleCount() {
+    const styles = getComputedStyle(funCarousel);
+    const visible = Number.parseInt(styles.getPropertyValue("--fun-visible"), 10);
+    return Number.isFinite(visible) && visible > 0 ? visible : 1;
+  }
+
+  function getMaxIndex() {
+    return Math.max(0, cards.length - getVisibleCount());
+  }
+
+  function updateFunCarousel() {
+    if (!track || cards.length === 0) return;
+
+    activeIndex = Math.min(activeIndex, getMaxIndex());
+
+    const cardWidth = cards[0].getBoundingClientRect().width;
+    const gap = Number.parseFloat(getComputedStyle(track).gap) || 0;
+    track.style.transform = `translateX(-${activeIndex * (cardWidth + gap)}px)`;
+
+    if (prevButton) prevButton.disabled = activeIndex === 0;
+    if (nextButton) nextButton.disabled = activeIndex >= getMaxIndex();
+  }
+
+  prevButton?.addEventListener("click", () => {
+    activeIndex = Math.max(0, activeIndex - 1);
+    updateFunCarousel();
+  });
+
+  nextButton?.addEventListener("click", () => {
+    activeIndex = Math.min(getMaxIndex(), activeIndex + 1);
+    updateFunCarousel();
+  });
+
+  window.addEventListener("resize", updateFunCarousel);
+  updateFunCarousel();
+}
