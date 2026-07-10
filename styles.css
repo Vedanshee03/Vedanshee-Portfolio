@@ -697,8 +697,13 @@ h3 {
   display: none;
 }
 
-.dialog-gallery-image--scaled img:not(.is-missing) {
-  transform: scale(var(--gallery-image-scale, 0.85));
+.dialog-gallery-image img.dialog-gallery-image-scaled:not(.is-missing) {
+  width: calc(100% * var(--gallery-image-scale, 0.85));
+  height: calc(100% * var(--gallery-image-scale, 0.85));
+  max-width: calc(100% * var(--gallery-image-scale, 0.85));
+  max-height: calc(100% * var(--gallery-image-scale, 0.85));
+  justify-self: center;
+  align-self: center;
 }
 
 .dialog-gallery-item figcaption {

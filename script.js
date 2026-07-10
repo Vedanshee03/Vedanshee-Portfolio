@@ -20,7 +20,7 @@ const projects = {
         src: "assets/projects/soft-robot/grasping.png",
         alt: "Soft robot grasping motion",
         caption: "Grasping motion",
-        scale: 0.82,
+        scale: 0.68,
       },
       {
         src: "assets/projects/soft-robot/bending.png",
@@ -89,7 +89,7 @@ const projects = {
         src: "assets/projects/bfmc/holding-demo-vehicle.png",
         alt: "Vedanshee holding the BFMC demo vehicle",
         caption: "With the demo vehicle",
-        scale: 0.82,
+        scale: 0.68,
       },
       {
         src: "assets/projects/bfmc/teamwork.png",
@@ -167,15 +167,16 @@ function renderProjectGallery(images) {
 
     const shell = document.createElement("div");
     shell.className = "image-shell dialog-gallery-image";
-    if (scale) {
-      shell.classList.add("dialog-gallery-image--scaled");
-      shell.style.setProperty("--gallery-image-scale", scale);
-    }
 
     const image = document.createElement("img");
     image.src = src;
     image.alt = alt;
     image.setAttribute("data-optional-image", "");
+
+    if (scale) {
+      image.classList.add("dialog-gallery-image-scaled");
+      image.style.setProperty("--gallery-image-scale", scale);
+    }
 
     const fallback = document.createElement("div");
     fallback.className = "image-fallback";
