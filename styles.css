@@ -697,6 +697,10 @@ h3 {
   display: none;
 }
 
+.dialog-gallery-image:has(img:not(.is-missing)) .image-fallback {
+  display: none;
+}
+
 .dialog-gallery-image img.dialog-gallery-image-scaled:not(.is-missing) {
   width: calc(100% * var(--gallery-image-scale, 0.85));
   height: calc(100% * var(--gallery-image-scale, 0.85));

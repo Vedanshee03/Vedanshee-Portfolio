@@ -125,9 +125,19 @@ function setHidden(element, hidden) {
   element.setAttribute("aria-hidden", String(hidden));
 }
 
+function getImageFallback(image) {
+  const sibling = image.nextElementSibling;
+  return sibling?.classList.contains("image-fallback") ? sibling : null;
+}
+
 function handleImageFallback(image) {
   image.classList.add("is-missing");
   image.setAttribute("aria-hidden", "true");
+
+  const fallback = getImageFallback(image);
+  if (fallback) {
+    fallback.hidden = false;
+  }
 }
 
 function setupOptionalImage(image) {
@@ -138,6 +148,11 @@ function setupOptionalImage(image) {
     if (image.naturalWidth > 0) {
       image.classList.remove("is-missing");
       image.removeAttribute("aria-hidden");
+
+      const fallback = getImageFallback(image);
+      if (fallback) {
+        fallback.hidden = true;
+      }
     }
   };
 
