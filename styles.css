@@ -304,6 +304,7 @@ h3 {
 .image-fallback small {
   font-family: ui-monospace, SFMono-Regular, Consolas, "Liberation Mono", monospace;
   font-size: 0.76rem;
+  word-break: break-all;
 }
 
 .two-column {

@@ -166,7 +166,13 @@ function renderProjectGallery(images) {
     image.alt = alt;
     image.setAttribute("data-optional-image", "");
 
+    const fallback = document.createElement("div");
+    fallback.className = "image-fallback";
+    fallback.setAttribute("aria-hidden", "true");
+    fallback.innerHTML = `<span>Add project photo</span><small>${src}</small>`;
+
     shell.appendChild(image);
+    shell.appendChild(fallback);
     item.appendChild(shell);
 
     if (caption) {
@@ -175,9 +181,7 @@ function renderProjectGallery(images) {
       item.appendChild(captionEl);
     }
 
-    setupOptionalImage(image, () => {
-      item.hidden = true;
-    });
+    setupOptionalImage(image);
 
     gallery.appendChild(item);
   });
