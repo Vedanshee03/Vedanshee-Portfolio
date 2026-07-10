@@ -17,9 +17,9 @@ Then visit `http://localhost:8080/`.
 The site supports optional photos. Add files at these paths:
 
 - Personal photo: `assets/profile.jpg`
-- Soft robot project: `assets/projects/soft-robot.jpg`
-- Autonomous rover project: `assets/projects/autonomous-rover.jpg`
-- BFMC project: `assets/projects/bfmc.jpg`
+- Soft robot project: `assets/projects/soft-robot.png`
+- Autonomous rover project: `assets/projects/autonomous-rover.png`
+- BFMC project: `assets/projects/bfmc.png`
 
 If an image is not present yet, the site shows a clean placeholder instead of a broken image.
 
