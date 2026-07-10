@@ -7,7 +7,7 @@ Static personal portfolio site for Vedanshee Trivedi, built with plain HTML, CSS
 Open `index.html` directly, or serve the folder locally:
 
 ```powershell
-python -m http.server 8080
+python3 -m http.server 8080
 ```
 
 Then visit `http://localhost:8080/`.
