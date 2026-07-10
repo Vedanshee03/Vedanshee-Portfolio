@@ -128,18 +128,23 @@ function handleImageFallback(image) {
   image.setAttribute("aria-hidden", "true");
 }
 
-function setupOptionalImage(image, onMissing) {
-  const markMissing = () => {
-    handleImageFallback(image);
-    onMissing?.();
+function setupOptionalImage(image) {
+  image.classList.add("is-missing");
+  image.setAttribute("aria-hidden", "true");
+
+  const revealImage = () => {
+    if (image.naturalWidth > 0) {
+      image.classList.remove("is-missing");
+      image.removeAttribute("aria-hidden");
+    }
   };
 
-  if (image.complete && image.naturalWidth === 0) {
-    markMissing();
-    return;
-  }
+  image.addEventListener("load", revealImage, { once: true });
+  image.addEventListener("error", () => handleImageFallback(image), { once: true });
 
-  image.addEventListener("error", markMissing, { once: true });
+  if (image.complete) {
+    revealImage();
+  }
 }
 
 function renderProjectGallery(images) {
@@ -148,11 +153,11 @@ function renderProjectGallery(images) {
   gallery.innerHTML = "";
 
   if (!images?.length) {
-    gallerySection.hidden = true;
+    setHidden(gallerySection, true);
     return;
   }
 
-  gallerySection.hidden = false;
+  setHidden(gallerySection, false);
 
   images.forEach(({ src, alt, caption }) => {
     const item = document.createElement("figure");
@@ -168,7 +173,6 @@ function renderProjectGallery(images) {
 
     const fallback = document.createElement("div");
     fallback.className = "image-fallback";
-    fallback.setAttribute("aria-hidden", "true");
     fallback.innerHTML = `<span>Add project photo</span><small>${src}</small>`;
 
     shell.appendChild(image);
