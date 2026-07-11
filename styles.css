@@ -238,7 +238,7 @@ h3 {
 }
 
 .portrait-card {
-  max-width: 280px;
+  width: min(280px, 100%);
   margin-inline: auto;
   padding: 1rem;
 }
