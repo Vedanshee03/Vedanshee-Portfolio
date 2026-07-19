@@ -471,6 +471,21 @@ h3 {
   margin: 0;
 }
 
+.fun-card-link {
+  display: inline-block;
+  margin-top: 0.75rem;
+  color: var(--accent-strong);
+  font-size: 0.86rem;
+  font-weight: 800;
+  border-bottom: 2px solid rgba(155, 101, 37, 0.28);
+  transition: color 180ms ease, border-color 180ms ease;
+}
+
+.fun-card-link:hover {
+  border-color: var(--accent);
+  color: var(--accent-strong);
+}
+
 .publication-card h3 a {
   border-bottom: 2px solid rgba(155, 101, 37, 0.28);
   transition: color 180ms ease, border-color 180ms ease;
