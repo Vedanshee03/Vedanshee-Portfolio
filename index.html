@@ -11,8 +11,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css?v=13">
-    <script src="script.js?v=11" defer></script>
+    <link rel="stylesheet" href="styles.css?v=14">
+    <script src="script.js?v=14" defer></script>
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
@@ -200,7 +200,17 @@
                 I built a pneumatic control system for a four-chamber soft robot arm using pressure
                 feedback, flow valves, and real-time PID control.
               </p>
-              <span class="project-link">Open project notes</span>
+              <div class="project-actions">
+                <span class="project-link">Open project notes</span>
+                <a
+                  class="project-code-link"
+                  href="https://github.com/USCzhaolab/PINN-based-Shape-Reconstruction-of-Soft-Robots/tree/vision_tracking/Camera-based-motion-tracking-marker-tracker"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  View code
+                </a>
+              </div>
             </article>
 
             <article class="project-card" tabindex="0" role="button" data-project="autonomous-rover" aria-label="Open details for Autonomous Rover Robot">
@@ -234,7 +244,17 @@
                 I helped build autonomous mobility behavior for a global competition where reliability
                 mattered as much as the idea.
               </p>
-              <span class="project-link">Open project notes</span>
+              <div class="project-actions">
+                <span class="project-link">Open project notes</span>
+                <a
+                  class="project-code-link"
+                  href="https://github.com/Vedanshee03/BFMC_Bosch_Code"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  View code
+                </a>
+              </div>
             </article>
           </div>
         </div>
@@ -440,6 +460,16 @@
         <div>
           <h3>Details</h3>
           <ul data-dialog-details></ul>
+        </div>
+        <div data-dialog-code-section hidden>
+          <h3>Code</h3>
+          <a
+            class="dialog-code-box"
+            data-dialog-code
+            href="#"
+            target="_blank"
+            rel="noreferrer"
+          ></a>
         </div>
         <aside class="dialog-note" data-dialog-note></aside>
       </div>

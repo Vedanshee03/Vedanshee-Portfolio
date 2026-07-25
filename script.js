@@ -15,6 +15,10 @@ const projects = {
     ],
     note:
       "Related publication: Model-based 3D shape reconstruction of soft robots via distributed strain sensing, Soft Robotics 12(6), 2025.",
+    code: {
+      label: "View code on GitHub",
+      url: "https://github.com/USCzhaolab/PINN-based-Shape-Reconstruction-of-Soft-Robots/tree/vision_tracking/Camera-based-motion-tracking-marker-tracker",
+    },
     images: [
       {
         src: "assets/projects/soft-robot/grasping.png",
@@ -84,6 +88,10 @@ const projects = {
     ],
     note:
       "I keep the ranking here instead of leading with it because the engineering work matters more than the scoreboard.",
+    code: {
+      label: "View code on GitHub",
+      url: "https://github.com/Vedanshee03/BFMC_Bosch_Code",
+    },
     images: [
       {
         src: "assets/projects/bfmc/holding-demo-vehicle.png",
@@ -117,6 +125,8 @@ const details = document.querySelector("[data-dialog-details]");
 const note = document.querySelector("[data-dialog-note]");
 const gallerySection = document.querySelector("[data-dialog-gallery-section]");
 const gallery = document.querySelector("[data-dialog-gallery]");
+const codeSection = document.querySelector("[data-dialog-code-section]");
+const codeLink = document.querySelector("[data-dialog-code]");
 let activeTrigger = null;
 
 function setHidden(element, hidden) {
@@ -227,6 +237,18 @@ function openProject(projectId, trigger) {
   note.textContent = project.note;
   renderProjectGallery(project.images);
 
+  if (codeSection && codeLink) {
+    if (project.code?.url) {
+      codeLink.href = project.code.url;
+      codeLink.textContent = project.code.label || "View code on GitHub";
+      setHidden(codeSection, false);
+    } else {
+      codeLink.removeAttribute("href");
+      codeLink.textContent = "";
+      setHidden(codeSection, true);
+    }
+  }
+
   setHidden(backdrop, false);
   setHidden(dialog, false);
   document.body.classList.add("dialog-open");
@@ -247,6 +269,7 @@ function closeProject() {
 }
 
 function handleProjectCardActivation(event) {
+  if (event.target.closest("a")) return;
   const card = event.currentTarget;
   const projectId = card.getAttribute("data-project");
   openProject(projectId, card);

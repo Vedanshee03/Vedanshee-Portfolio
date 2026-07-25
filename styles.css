@@ -444,10 +444,37 @@ h3 {
   margin: 0 0 1rem;
 }
 
+.project-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem 1.1rem;
+}
+
 .project-link {
   color: var(--accent-strong);
   font-size: 0.86rem;
   font-weight: 800;
+}
+
+.project-code-link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 34px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 0.35rem 0.85rem;
+  background: white;
+  color: var(--accent-strong);
+  font-size: 0.82rem;
+  font-weight: 800;
+  transition: border-color 180ms ease, transform 180ms ease, box-shadow 180ms ease;
+}
+
+.project-code-link:hover {
+  border-color: rgba(155, 101, 37, 0.42);
+  box-shadow: 0 8px 18px rgba(40, 31, 17, 0.08);
+  transform: translateY(-1px);
 }
 
 .publication-card,
@@ -777,6 +804,33 @@ h3 {
   font-size: 0.82rem;
   font-weight: 700;
   text-align: center;
+}
+
+.dialog-code-box {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: white;
+  color: var(--accent-strong);
+  padding: 0.95rem 1.1rem;
+  font-weight: 800;
+  box-shadow: 0 8px 20px rgba(40, 31, 17, 0.05);
+  transition: border-color 180ms ease, transform 180ms ease, box-shadow 180ms ease;
+}
+
+.dialog-code-box::after {
+  content: "↗";
+  color: var(--subtle);
+  font-weight: 700;
+}
+
+.dialog-code-box:hover {
+  border-color: rgba(155, 101, 37, 0.42);
+  box-shadow: 0 12px 24px rgba(40, 31, 17, 0.08);
+  transform: translateY(-1px);
 }
 
 .dialog-note {
