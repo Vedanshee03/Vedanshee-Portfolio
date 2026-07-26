@@ -59,6 +59,10 @@ const projects = {
     ],
     note:
       "This project placed 2nd nationally out of 150 teams, received $12K in funding, and led to a provisional patent filing for the rover design.",
+    pdf: {
+      label: "View PDF documentation",
+      url: "https://drive.google.com/file/d/1bAevkGdFn2qcD8LPoMQn8Oa_mLNt-YNM/view?usp=sharing",
+    },
     images: [
       {
         src: "assets/projects/autonomous-rover/chassis.png",
