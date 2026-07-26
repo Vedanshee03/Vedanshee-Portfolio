@@ -19,6 +19,10 @@ const projects = {
       label: "View code on GitHub",
       url: "https://github.com/USCzhaolab/PINN-based-Shape-Reconstruction-of-Soft-Robots/tree/vision_tracking/Camera-based-motion-tracking-marker-tracker",
     },
+    pdf: {
+      label: "View PDF documentation",
+      url: "https://drive.google.com/file/d/1J7EDSH7Ij7155wrqOTuC3uVODx_88WTB/view?usp=sharing",
+    },
     images: [
       {
         src: "assets/projects/soft-robot/grasping.png",
@@ -127,6 +131,8 @@ const gallerySection = document.querySelector("[data-dialog-gallery-section]");
 const gallery = document.querySelector("[data-dialog-gallery]");
 const codeSection = document.querySelector("[data-dialog-code-section]");
 const codeLink = document.querySelector("[data-dialog-code]");
+const pdfSection = document.querySelector("[data-dialog-pdf-section]");
+const pdfLink = document.querySelector("[data-dialog-pdf]");
 let activeTrigger = null;
 
 function setHidden(element, hidden) {
@@ -246,6 +252,18 @@ function openProject(projectId, trigger) {
       codeLink.removeAttribute("href");
       codeLink.textContent = "";
       setHidden(codeSection, true);
+    }
+  }
+
+  if (pdfSection && pdfLink) {
+    if (project.pdf?.url) {
+      pdfLink.href = project.pdf.url;
+      pdfLink.textContent = project.pdf.label || "View PDF";
+      setHidden(pdfSection, false);
+    } else {
+      pdfLink.removeAttribute("href");
+      pdfLink.textContent = "";
+      setHidden(pdfSection, true);
     }
   }
 
